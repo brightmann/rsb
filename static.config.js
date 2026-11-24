@@ -46,6 +46,7 @@ const posts = fs
 export default {
   siteRoot: 'https://brightmann.github.io',
   basePath: 'rsb',
+  assetsPath: '/',
   plugins: ['react-static-plugin-reach-router', 'react-static-plugin-sitemap'],
   getSiteData: () => ({
     title: 'rsb',
