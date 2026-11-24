@@ -44,12 +44,13 @@ const posts = fs
   .sort((a, b) => (a.date < b.date ? 1 : -1))
 
 export default {
-  siteRoot: 'https://brightmann.github.io',
-  basePath: 'rsb',
+  siteRoot: process.env.CF_PAGES_URL || 'https://brightmann.github.io',
+  basePath: process.env.CF_PAGES ? '' : 'rsb',
   assetsPath: '/',
   plugins: ['react-static-plugin-reach-router', 'react-static-plugin-sitemap'],
   getSiteData: () => ({
     title: 'rsb',
+    basePath: process.env.CF_PAGES ? '' : '/rsb',
   }),
   getRoutes: async () => {
     const routes = []
