@@ -1,13 +1,14 @@
 import React from 'react'
 import { navigate } from '@reach/router'
-import { useBasepath } from 'react-static'
 
-// Link that always carries the site base path (e.g. /rsb), both in the
-// static HTML and after client-side hydration.
+// Must match basePath in static.config.js. useBasepath() is empty in the
+// client bundle, so it is set here to keep links identical in the static
+// HTML and after hydration.
+const BASE_PATH = '/rsb'
+
+// Link that always carries the site base path.
 export function Link({ to, children, onClick, ...rest }) {
-  const base = useBasepath()
-  const prefix = base ? `/${base}`.replace(/\/+$/, '') : ''
-  const href = `${prefix}${to}`
+  const href = `${BASE_PATH}${to}`
   const handle = e => {
     if (onClick) onClick(e)
     if (
