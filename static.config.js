@@ -46,7 +46,7 @@ const posts = fs
 export default {
   siteRoot: process.env.CF_PAGES_URL || 'https://brightmann.github.io',
   basePath: process.env.CF_PAGES ? '' : 'rsb',
-  assetsPath: '/',
+  assetsPath: process.env.CF_PAGES ? process.env.CF_PAGES_URL : '/',
   plugins: ['react-static-plugin-reach-router', 'react-static-plugin-sitemap'],
   getSiteData: () => ({
     title: 'rsb',
